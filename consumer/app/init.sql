@@ -26,5 +26,4 @@ CREATE TABLE IF NOT EXISTS orders(
     status VARCHAR(250),
     comments VARCHAR(250),
     customerNumber INT
-    FOREIGN KEY (customerNumber) REFERENCES customers(customerNumber)
 );

@@ -19,7 +19,7 @@ class MongoManager:
     
     def init_db(self, collection):
         try:
-            with open('./suspicious_customers_orders.json') as file:
+            with open('./app/suspicious_customers_orders.json') as file:
                 data = json.load(file)
                 collection.insert_many(data)
         except Exception as e:
