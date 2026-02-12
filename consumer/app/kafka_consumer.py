@@ -16,7 +16,7 @@ consumer = Consumer(consumer_config)
 
 consumer.subscribe([KAFKA_TOPIC])
 
-def listen():
+def listen(sql_manager):
     while True:
         msg = consumer.poll(1.0)
         if msg is None:
@@ -28,7 +28,8 @@ def listen():
         value = msg.value().decode("utf-8")
         event = json.loads(value)
 
+        cnx = sql_manager.get_cnx()
         if event["type"] == "customer":
-            EventsHandler.insert_customer(event)
+            EventsHandler.insert_customer(cnx, event)
         if event["type"] == "order":
-            EventsHandler.insert_order(event)
+            EventsHandler.insert_order(cnx, event)
