@@ -13,7 +13,7 @@ producer_config = {
 producer = Producer(producer_config)
 
 def get_data_from_collection(collection, skip, limit):
-    data = list(collection.find({}).skip(skip).limit(limit))
+    data = list(collection.find({"_id": 0}).skip(skip).limit(limit))
     return data
 
 def send_to_kafka(collection):

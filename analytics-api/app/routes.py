@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Request, HTTPException, Depends
-from dal import Dal
+from app.dal import Dal
 
 analytics_router = APIRouter()
 
